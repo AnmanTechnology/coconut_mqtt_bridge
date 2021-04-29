@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="OUTPUT_METHOD" default="screen"/>
+  <arg name="RESPAWN" default="false"/>
+
+  <node name="mqtt_bridge" pkg="mqtt_bridge" type="mqtt_bridge_node.py" output="$(arg OUTPUT_METHOD)" respawn="$(arg RESPAWN)">
+    <rosparam command="load" file="$(find coconut_mqtt_bridge)/config/coconut_bridge.yaml" />
+  </node>
+
+  <node name="coconut_bridge" pkg="coconut_mqtt_bridge" type="coconut_bridge.py" output="$(arg OUTPUT_METHOD)" respawn="$(arg RESPAWN)"/>
+
+</launch>

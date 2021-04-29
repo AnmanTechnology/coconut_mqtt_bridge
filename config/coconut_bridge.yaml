@@ -1,0 +1,67 @@
+mqtt:
+  client:
+    protocol: 4      # MQTTv311
+  connection:
+    host: localhost
+    port: 1883
+    keepalive: 60
+  private_path: robot/010
+serializer: json:dumps
+deserializer: json:loads
+bridge:
+  - factory: mqtt_bridge.bridge:RosToMqttBridge
+    msg_type: std_msgs.msg:UInt8
+    topic_from: /battery_status
+    topic_to: battery_status
+
+  - factory: mqtt_bridge.bridge:RosToMqttBridge
+    msg_type: std_msgs.msg:UInt8
+    topic_from: /battery_percent
+    topic_to: battery_percent
+
+  - factory: mqtt_bridge.bridge:RosToMqttBridge
+    msg_type: std_msgs.msg:Float32
+    topic_from: /sens_voltage
+    topic_to: sens_voltage
+
+  - factory: mqtt_bridge.bridge:RosToMqttBridge
+    msg_type: std_msgs.msg:Float32
+    topic_from: /sens_current
+    topic_to: sens_current
+
+  - factory: mqtt_bridge.bridge:RosToMqttBridge
+    msg_type: geometry_msgs.msg:Twist
+    topic_from: /feedback_vel
+    topic_to: feedback_vel
+
+  - factory: mqtt_bridge.bridge:MqttToRosBridge
+    msg_type: geometry_msgs.msg:Twist
+    topic_from: coconut_vel
+    topic_to: /coconut_vel
+
+  - factory: mqtt_bridge.bridge:RosToMqttBridge
+    msg_type: std_msgs.msg:ByteMultiArray
+    topic_from: /bumper_data
+    topic_to: bumper_data
+
+  - factory: mqtt_bridge.bridge:RosToMqttBridge
+    msg_type: std_msgs.msg:UInt16MultiArray
+    topic_from: /ultrasonic_data
+    topic_to: ultrasonic_data
+
+  - factory: mqtt_bridge.bridge:RosToMqttBridge
+    msg_type: std_msgs.msg:UInt8
+    topic_from: /device_status
+    topic_to: freewheel_btn
+ 
+  - factory: mqtt_bridge.bridge:RosToMqttBridge
+    msg_type: std_msgs.msg:UInt8
+    topic_from: /emergency_status
+    topic_to: emergency_btn
+  
+  
+  # - factory: mqtt_bridge.bridge:RosToMqttBridge
+  #   msg_type: geometry_msgs.msg:Twist
+  #   topic_from: /vel
+  #   topic_to: ping
+  

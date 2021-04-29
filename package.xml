@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>coconut_mqtt_bridge</name>
+  <version>0.1.0</version>
+  <description>The coconut_mqtt_bridge package</description>
+
+  <author email="wuttipat.cho@anman.co.th">Liews Wuttipat</author>
+  <maintainer email="wuttipat.cho@anman.co.th">Liews Wuttipat</maintainer>
+  <license>BSD</license>
+
+  <url type="repository">https://github.com/AnmanTechnology/coconut_mqtt_bridge</url>
+  <url type="bugtracker">https://github.com/AnmanTechnology/coconut_mqtt_bridge/issues</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+</package>
